@@ -1,0 +1,2 @@
+# False positive, async.js is different to libjs-async
+embedded-javascript-library usr/share/nodejs/bluebird/js/release/async.js please use libjs-async

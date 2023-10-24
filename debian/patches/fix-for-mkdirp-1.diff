@@ -1,0 +1,36 @@
+Description: fix for mkdirp ≥ 1
+Author: Xavier Guimard <yadd@debian.org>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Last-Update: 2020-10-23
+
+--- a/tools/build.js
++++ b/tools/build.js
+@@ -5,7 +5,7 @@
+ var utils = require("./utils.js");
+ var glob = Promise.promisify(require("glob"));
+ var fs = Promise.promisifyAll(require("fs"));
+-var mkdirp = Promise.promisify(require("mkdirp"));
++var mkdirp = require("mkdirp");
+ var rimraf = Promise.promisify(require("rimraf"));
+ 
+ jobRunner.init(path.join(__dirname, ".."), function() {
+@@ -124,7 +124,7 @@
+ function ensureDirectory(dir, isUsed, clean) {
+     return (clean ? rimraf(dir) : Promise.resolve()).then(function() {
+         if (!isUsed) return dir;
+-        return mkdirp(dir).thenReturn(dir);
++        return mkdirp(dir).then(()=>{return(dir)});
+     });
+ }
+ 
+--- a/tools/test.js
++++ b/tools/test.js
+@@ -8,7 +8,7 @@
+ var argv = require("optimist").argv;
+ var glob = Promise.promisify(require("glob"));
+ var path = require("path");
+-var mkdirp = Promise.promisify(require("mkdirp"));
++var mkdirp = require("mkdirp");
+ var rimraf = Promise.promisify(require("rimraf"));
+ var jobRunner = require("./job-runner/job-runner.js");
+ var mochaRunner = require("./mocha_runner.js");

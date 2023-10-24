@@ -1,0 +1,33 @@
+Manual Tests
+============
+
+A small test of bluebird is to use a slightly modified version of the
+example snippets.js file found on the upstream wiki:
+https://github.com/petkaantonov/bluebird/wiki/Snippets#reading-directory-and-sub-directory-contents-recursively
+
+Create a file called snippets.js with the following code in it:
+var Promise = require("bluebird");
+var fs = Promise.promisifyAll(require("fs"));
+var Path = require("path");
+
+function readDir(dirName) {
+    return fs.readdirAsync(dirName).map(function (fileName) {
+        var path = Path.join(dirName, fileName);
+        return fs.statAsync(path).then(function(stat) {
+            return stat.isDirectory() ? readDir(path) : path;
+        });
+    }).reduce(function (a, b) {
+        return a.concat(b);
+    }, []);
+}
+
+readDir(".").then(function(v){
+    console.log(v.join("\n"));
+});
+
+Then from the source tree run: $ node snippets.js
+You should see a recursive file listing of your current directory
+
+To do:
+Add a test for the browser (libjs) version of bluebird once we have
+a browser package (once brpwserify is in Debian).

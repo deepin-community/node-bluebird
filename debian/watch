@@ -1,0 +1,9 @@
+version=4
+opts=\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-bluebird-$1/,\
+repacksuffix=+dfsg1 \
+https://github.com/petkaantonov/bluebird/tags .*/archive/.*/v?([\d\.]+).tar.gz group
+
+opts="searchmode=plain,component=types-bluebird,ctype=nodejs,pgpmode=none,filenamemangle=s/^.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-types-bluebird-$1/" \
+ https://registry.npmjs.org/@types/bluebird https://registry.npmjs.org/@types/bluebird/-/bluebird-([\d\.]+)@ARCHIVE_EXT@ group

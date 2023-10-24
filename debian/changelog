@@ -1,5 +1,114 @@
-template-repository (1.0-1) unstable; urgency=medium
+node-bluebird (3.7.2+dfsg1+~3.5.36-2) unstable; urgency=medium
 
-  * Initial release
+  * Team upload
+  * Update standards version to 4.6.2, no changes needed.
+  * Clean test fixture (Closes: #1045297)
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Yadd <yadd@debian.org>  Tue, 15 Aug 2023 20:34:52 +0400
+
+node-bluebird (3.7.2+dfsg1+~3.5.36-1) unstable; urgency=medium
+
+  * Team upload
+  * Embed typescript declarations and repack
+  * Add build dependency to itself and remove embedded old version
+  * Update copyright
+
+ -- Yadd <yadd@debian.org>  Mon, 07 Mar 2022 12:40:09 +0100
+
+node-bluebird (3.7.2+dfsg1-5) unstable; urgency=medium
+
+  * Team upload
+  * Update standards version to 4.6.0, no changes needed.
+  * Fix GitHub tags regex
+  * Fix filenamemangle
+
+ -- Yadd <yadd@debian.org>  Fri, 12 Nov 2021 11:08:32 +0100
+
+node-bluebird (3.7.2+dfsg1-4) unstable; urgency=medium
+
+  * Team upload
+  * Back to unstable after successful tests
+
+ -- Xavier Guimard <yadd@debian.org>  Sat, 24 Oct 2020 19:54:14 +0200
+
+node-bluebird (3.7.2+dfsg1-3) experimental; urgency=medium
+
+  * Team upload
+  * Add fix for mkdirp ≥ 1
+  * Apply multi-arch hints
+
+ -- Xavier Guimard <yadd@debian.org>  Fri, 23 Oct 2020 10:29:16 +0200
+
+node-bluebird (3.7.2+dfsg1-2) unstable; urgency=medium
+
+  * Team upload
+  * Bump debhelper compatibility level to 13
+  * Use dh-sequence-nodejs
+  * Fix test with pkg-js-tools ≥ 0.9.41
+
+ -- Xavier Guimard <yadd@debian.org>  Fri, 09 Oct 2020 16:42:04 +0200
+
+node-bluebird (3.7.2+dfsg1-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Debian Janitor ]
+  * Remove obsolete field Name from debian/upstream/metadata (already
+    present in machine-readable debian/copyright).
+
+  [ Xavier Guimard ]
+  * New upstream version 3.7.2+dfsg1
+  * Reduce test list
+  * Drop node-cross-spawn dependency (Closes: #959788)
+
+ -- Xavier Guimard <yadd@debian.org>  Tue, 05 May 2020 16:04:56 +0200
+
+node-bluebird (3.5.3+dfsg1-2) unstable; urgency=medium
+
+  * Team upload
+
+  [ Ross Gammon ]
+  * Remove myself from uploaders
+
+  [ Xavier Guimard ]
+  * Declare compliance with policy 4.5.0
+  * Remove walk.patch and require acorn ≥ 6 (Closes: #954596)
+
+ -- Xavier Guimard <yadd@debian.org>  Mon, 23 Mar 2020 12:44:42 +0100
+
+node-bluebird (3.5.3+dfsg1-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Jérémy Lal ]
+  * New upstream version 3.5.3+dfsg1
+  * Honor nocheck
+  * nodejs -> node, and --expose-gc for async
+
+  [ Xavier Guimard ]
+  * Bump debhelper compatibility level to 12
+  * Declare compliance with policy 4.4.1
+  * Add "Rules-Requires-Root: no"
+  * Use pkg-js-tools auto test & install
+  * Enable full autopkgtest
+
+ -- Xavier Guimard <yadd@debian.org>  Fri, 10 Jan 2020 06:09:49 +0100
+
+node-bluebird (3.5.1+dfsg2-2) unstable; urgency=medium
+
+  [ Hubert Chathi ]
+  * Update location of acorn's walk to the new location for Acorn 5
+    (Closes: #897545)
+
+  [ Ross Gammon ]
+  * Move repository from Alioth to Salsa
+  * Use https: in upstream URL in debian/copyright
+  * Fix spelling error in fix_root_dir.patch
+
+ -- Ross Gammon <rossgammon@debian.org>  Sun, 06 May 2018 12:05:28 +0200
+
+node-bluebird (3.5.1+dfsg2-1) unstable; urgency=low
+
+  * Initial release (Closes: #779305)
+
+ -- Ross Gammon <rossgammon@debian.org>  Sun, 15 Oct 2017 15:30:13 +0200

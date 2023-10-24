@@ -1,0 +1,27 @@
+Description: drop dependency to node-cross-spawn
+Author: Xavier Guimard <yadd@debian.org>
+Bug-Debian: https://bugs.debian.org/959788
+Forwarded: not-needed
+Last-Update: 2020-05-05
+
+--- a/package.json
++++ b/package.json
+@@ -48,7 +48,6 @@
+     "browserify": "^8.1.1",
+     "cli-table": "~0.3.1",
+     "co": "^4.2.0",
+-    "cross-spawn": "^0.2.3",
+     "glob": "^4.3.2",
+     "grunt-saucelabs": "~8.4.1",
+     "highland": "^2.3.0",
+--- a/tools/utils.js
++++ b/tools/utils.js
+@@ -1,7 +1,7 @@
+ var Promise = require("bluebird");
+ var assert = require("assert");
+ var path = require("path");
+-var spawn = require("cross-spawn");
++var spawn = require("child_process").spawn;
+ Promise.longStackTraces();
+ var fs = Promise.promisifyAll(require("fs"));
+ var notAscii = /[^\u000D\u0019-\u007E]/;

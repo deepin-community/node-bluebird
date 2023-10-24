@@ -1,0 +1,43 @@
+Pre-built copy
+==============
+
+Bluebird build-depends on itself, so a pre-built copy is found in
+debian/node-modules/bluebird.  After building the package, you can easily
+verify that the files found in that directory are the same as the generated
+files.
+
+ -- Hubert Chathi <uhoreg@debian.org>, Sun,  1 Oct 2017 12:12:36 -0400
+
+Once bluebird has been around for a while, we could consider using
+build-profiles to conditionally build with the bluebird in the Debian
+archive. This would be necessary to allow downstream derivatives to
+boostrap bluebird like we have done here.
+
+ -- Ross Gammon <rossgammon@debian.org> Sun, 15 Oct 2017 13:16:00 +0100
+
+Minimised JavaScript
+====================
+
+The upstream source of node-bluebird contained a benchmark directory
+that includes a minimied javascript file called fakesSJS-dst.js. I
+was not able to track down the source of this file, and as I was not
+planning to install the benchmarks anyway, I simply repacked the
+tarball excluding the whole benchmark directory using the enhanced
+uscan function of Files-Excluded in debian/copyright.
+There are also minified versions of bluebird in the browser directory.
+As we are not builing the browser version of bluebird until browserify
+is packaged in Debian, the problem files for the browser version have
+also been removed from the tarball.
+
+ -- Ross Gammon <rossgammon@debian.org> Sun, 15 Oct 2017 13:16:00 +0100
+
+Documenation
+============
+
+The upstream documentation includes anti-patterns.md which is licensed
+with CC-BY-SA-2.5. Unfortunately, this version of the license contains
+restrictions on derivitive works that make it non-free according to
+DFSG. Therefore, the tarball has been repacked to exclude these
+files. Also note that the documentation requires Jekyll to be served.
+
+ -- Ross Gammon <rossgammon@debian.org> Sun, 15 Oct 2017 13:16:00 +0100
