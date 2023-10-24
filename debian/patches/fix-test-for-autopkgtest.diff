@@ -1,0 +1,22 @@
+Description: disable bad check for autopkgtest
+Author: Xavier Guimard <yadd@debian.org>
+Forwarded: not-needed
+Last-Update: 2020-01-09
+
+--- a/tools/build.js
++++ b/tools/build.js
+@@ -254,10 +254,10 @@
+ 
+ var root = process.cwd();
+ // Since rm -rf is called, better be sure...
+-if (path.basename(root).toLowerCase().indexOf("node-bluebird") !== 0) {
+-    throw new Error("cwd must be set to bluebird project root. cwd is currently\n\n" +
+-        "         " + process.cwd() + "\n");
+-}
++//if (path.basename(root).toLowerCase().indexOf("node-bluebird") !== 0) {
++//    throw new Error("cwd must be set to bluebird project root. cwd is currently\n\n" +
++//        "         " + process.cwd() + "\n");
++//}
+ var dirs = {
+     release: path.join(root, "js", "release"),
+     debug: path.join(root, "js", "debug"),

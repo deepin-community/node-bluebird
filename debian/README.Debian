@@ -1,0 +1,23 @@
+To-do
+-----
+1. Build the browser & minified javascript using the upstream build. This
+requires the following build dependencies not yet packaged for Debian:
+-browserify
+
+2. Bluebird depends on a prebuilt version of itself to build all the
+files in "js/release" for the node package. Once bluebird has been in
+the archive for a while, it might be possible to use build-profiles
+to conditionally use the packaged version of bluebird to build. It would
+have to be conditional to allow downstream distributions to boostrap
+bluebird for the first time in their distribution.
+
+3. The upstream test suite is currently run by moving the built version
+of bluebird into the node_module directory for the tests. We may be able
+to use build-profiles (see 2. above) to only conditionally do this. As
+jshint is unlikely to appear in Debian soon (due to licensing issues)
+the upstream testsuite is run using the "--no-jshint" option. There are
+a few tests that fail at the moment. We should try and fix these, or
+exclude them using a glob, to avoid the long list of individual tests,
+and to speed up the time it takes to run the tests.
+
+ -- Ross Gammon <rossgammon@debian.org> Sun, 15 Oct 2017 13:16:00 +0100

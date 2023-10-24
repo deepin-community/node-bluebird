@@ -1,0 +1,22 @@
+Description: Avoid error for incorrect root directory
+ Avoid error for incorrect root directory. Test/build.js expects
+ "bluebird". When building in Debian, the root directory
+ changes (e.g. node-bluebird-3.4.6). Although this should not matter for
+ Debian (the check is probably just in case a developer tries to
+ run the tests outside of the root directory), this patch checks that
+ at least the first 13 characters of the root directory contain
+ "node-bluebird".
+Author: Ross Gammon <rossgammon@mail.dk>
+Forwarded: not-needed
+
+--- node-bluebird.orig/tools/build.js
++++ node-bluebird/tools/build.js
+@@ -254,7 +254,7 @@
+ 
+ var root = process.cwd();
+ // Since rm -rf is called, better be sure...
+-if (path.basename(root).toLowerCase().indexOf("bluebird") !== 0) {
++if (path.basename(root).toLowerCase().indexOf("node-bluebird") !== 0) {
+     throw new Error("cwd must be set to bluebird project root. cwd is currently\n\n" +
+         "         " + process.cwd() + "\n");
+ }
